@@ -14,23 +14,22 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-
-    _controller = VideoPlayerController.asset('assets/videos/splash.mp4')
+    _controller = VideoPlayerController.asset('assets/videos/thunder_splash.mp4')
       ..initialize().then((_) {
         _controller.play();
         setState(() {});
       });
 
     _controller.addListener(() {
-      if (_controller.value.position >= _controller.value.duration) {
-        // Placeholder: Show a message after splash video
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (_) => const PlaceholderScreen(),
-          ),
-        );
+      if (_controller.value.position >= _controller.value.duration &&
+          _controller.value.isInitialized) {
+        _navigateToNext();
       }
     });
+  }
+
+  void _navigateToNext() {
+    Navigator.pushReplacementNamed(context, '/onboarding');
   }
 
   @override
@@ -50,23 +49,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: VideoPlayer(_controller),
               )
             : const CircularProgressIndicator(),
-      ),
-    );
-  }
-}
-
-// This is a simple temporary screen to avoid error
-class PlaceholderScreen extends StatelessWidget {
-  const PlaceholderScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'Splash complete. Home screen coming soon!',
-          style: TextStyle(color: Colors.white),
-        ),
       ),
     );
   }
