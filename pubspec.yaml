@@ -1,35 +1,47 @@
 name: jeevandesk_flutter
-description: "A new Flutter project."
-
-publish_to: 'none' # This prevents publishing to pub.dev
-
-version: 1.0.0+1
+description: JeevanDesk frontend
 
 environment:
-  sdk: ">=3.8.0 <4.0.0"
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-
   cupertino_icons: ^1.0.8
+  animated_background: ^2.0.0
+  flutter_animate: ^4.2.0
   video_player: ^2.10.0
+  appwrite: ^12.0.0
+  lottie: ^3.1.0  # Web-supported Lottie animations
+  shared_preferences: ^2.2.2
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^3.0.2
 
 flutter:
   uses-material-design: true
 
   assets:
-    - assets/splash/thunder_splash.mp4
+    - assets/avatars/avatar1.jpg
+    - assets/avatars/avatar2.jpg
+    - assets/avatars/avatar3.jpg
+    - assets/avatars/avatar4.jpg
+    - assets/logo.png
+    - assets/splash.mp4
+    - assets/onboarding1.png
+    - assets/onboarding2.png
+    - assets/onboarding3.png
 
-  # Enable this later when you add Manrope font
-  # fonts:
-  #   - family: Manrope
-  #     fonts:
-  #       - asset: assets/fonts/Manrope-Regular.ttf
-  #       - asset: assets/fonts/Manrope-Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: Manrope
+      fonts:
+        - asset: assets/fonts/Manrope-Regular.ttf
+        - asset: assets/fonts/Manrope-Bold.ttf
+          weight: 700
+
+# 🔥 Force correct version to fix build crash (flutter_web_auth_2 Registrar error)
+dependency_overrides:
+  flutter_web_auth_2: 4.1.0
